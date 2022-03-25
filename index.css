@@ -1,0 +1,8 @@
+@charset "utf-8";
+/* CSS Document */
+.hello{
+	color:red;
+	width: 750px;
+	height:750px;
+	background: url("m.png");
+}

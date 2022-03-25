@@ -6,23 +6,18 @@ var yaml = require('yaml');
 var toml = require('toml');
 var json5 = require('json5');
 var path = require('path');
-var ESLintPlugin = require('eslint-webpack-plugin');
-module.exports = (env) => {
-	console.log(env.mo);
-	return {
+module.exports = {
 	entry: {
 		index:'./entry.js',
 		another:'./a.js'
 	},
 	output:{
 		path:path.resolve(__dirname,'dist'),
-		filename:'scripts/[name].[contenthash].js',
-		clean:true
+		clean:true,
 	},
 	devtool:'inline-source-map',
 	devServer:{
 		static:'./dist',
-		liveReload:true,
 		hot:true
 	},
 	module:{
@@ -93,8 +88,7 @@ module.exports = (env) => {
 		new HtmlWebpackPlugin({
 			template:'./index.ejs',
 			filename:'i.html'
-	})
-	],
+	})],
 	optimization:{
 		splitChunks:{
 			cacheGroups:{
@@ -106,6 +100,5 @@ module.exports = (env) => {
 			}
 		}
 	},
-	mode:env.production?'production':'development'
-}
+	mode:'development'
 }
